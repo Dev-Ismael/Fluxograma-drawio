@@ -75,6 +75,7 @@ RENAME TO novopaciente;
 
 -- APAGAR TABELA - DROP
 /*
+DROP TABLE IF EXISTS clinica.consulta;
 DROP TABLE clinica.consulta;
 DROP TABLE clinica.clinica;
 DROP TABLE clinica.paciente;
