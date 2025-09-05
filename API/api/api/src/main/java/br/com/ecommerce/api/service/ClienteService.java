@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service // Avisa o SPRING que e um servico
-public class ClienteServices {
+public class ClienteService {
     // Injecao de dependencia
     // Falar que services depende de alguem
     // fianl - constante
     private final ClienteRepository clienteRepository;
 
-    public ClienteServices(ClienteRepository repo) {
+    public ClienteService(ClienteRepository repo) {
         clienteRepository = repo;
     }
 
@@ -23,5 +23,4 @@ public class ClienteServices {
     public List<Cliente> listarTodos() {
         return clienteRepository.findAll();
     }
-
 }
