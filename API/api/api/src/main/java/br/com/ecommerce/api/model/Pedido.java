@@ -30,4 +30,5 @@ public class Pedido {
     @Column(name = "status", nullable = false, length = Integer.MAX_VALUE)
     private String status;
 
+
 }

@@ -24,7 +24,27 @@ public class ClienteService {
         return clienteRepository.findAll();
     }
 
+    // Metodo cadastrar cliente
     public Cliente cadastrarCliente(Cliente cl){
         return clienteRepository.save(cl);
+    }
+
+    // Metodo buscar cliente por ID
+    public Cliente buscarPorId(Integer id){
+        return clienteRepository.findById(id).orElse(null);
+    }
+
+    public Cliente deletarCliente(Integer id){
+        // 1 - Verifico se o cliente existe
+        Cliente cliente = buscarPorId(id);
+
+        // 2 - Se náo existir, retorno nullo
+        if (cliente == null){
+            return null;
+        }
+
+        // 3 - Se existir, excluo
+        clienteRepository.delete(cliente);
+        return cliente;
     }
 }
