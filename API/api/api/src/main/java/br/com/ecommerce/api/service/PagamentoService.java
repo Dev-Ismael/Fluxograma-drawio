@@ -21,4 +21,23 @@ public class PagamentoService {
     public Pagamento cadastrarPagamento(Pagamento pag){
         return pagamentoRepository.save(pag);
     }
+
+    // Metodo para buscar por ID
+    public Pagamento buscarPorId(Integer id){
+        return pagamentoRepository.findById(id).orElse(null);
+    }
+
+    // Metodo para deletar por Id
+    public Pagamento deletarPorId(Integer id){
+        // 1 - Verifica se o pagamento existe
+        Pagamento pagamento = buscarPorId(id);
+        // 2 - Se náo existir, retorno nullo
+        if (pagamento == null){
+            return null;
+        }
+        // 3 - Se existir, excluo
+        pagamentoRepository.delete(pagamento);
+        return pagamento;
+
+    }
 }

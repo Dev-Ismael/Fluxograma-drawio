@@ -75,13 +75,25 @@ public class ClienteController {
 
             // 2. Se não existir retorno erro
             if (cliente == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body("Cliente " + id + " não encontrado!");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente " + id + " não encontrado!");
             }
 
             // 3. Se existir, retorno ok
             return ResponseEntity.ok(cliente);
         }
 
+        @PutMapping("/{id}")
+        // @PathVariable pega da Rota
+        // @RequestBody  do corpo
+        public ResponseEntity<?> atualizarCliente(@PathVariable Integer id, @RequestBody Cliente clienteNovo){
+        // 1 - Tenta atualizar o cliente
+        Cliente cliente = clienteService.atualizarCliente(id, clienteNovo);
+        // 2 - Se náo achar o cliente, erroif (cliente == null) {
+            if (cliente == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente nao encontrado");
+            }
+        // 3 - Se achar retorno ok
+        return ResponseEntity.ok(cliente);
+        }
 
 }
